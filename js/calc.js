@@ -9,6 +9,7 @@ var value2;
 var isOperationSet = false;
 var val1set=false;
 var val2set=false;
+var calcString='';
 
 buttonClear[0].addEventListener('click',function(){clearall();});
 equals[0].addEventListener('click',function(){result();});
@@ -27,57 +28,70 @@ buttonNum[7].addEventListener('click',function(){setval(2);});
 buttonNum[8].addEventListener('click',function(){setval(3);});
 
 function setval(value){
-  if(val1set==false){
-    value1=value;
-    val1set=true;
-    display.innerHTML=value1;
-  }else if (val2set==false) {
-    value2=value;
-    val2set=true;
-    display.innerHTML=value2;
-  }
+  // if(val1set==false){
+  //   value1=value;
+  //   val1set=true;
+  //   display.innerHTML=value1;
+  // }else if (val2set==false) {
+  //   value2=value;
+  //   val2set=true;
+  //   display.innerHTML=value2;
+  // }
+  calcString+=value;
+  display.innerHTML=calcString;
 }
 function clearall(){
-  val1set=false;
-  val2set=false;
+  // val1set=false;
+  // val2set=false;
   display.innerHTML="Sparta Calculator";
+  calcString='';
 }
 function multiply(){
-  toDoOperation='mul';
-  isOperationSet=true;
+  // toDoOperation='mul';
+  // isOperationSet=true;
+  calcString+='*';
+  display.innerHTML=calcString;
 }
 function divide(){
-  toDoOperation='div';
-  isOperationSet=true;
+  // toDoOperation='div';
+  // isOperationSet=true;
+  calcString+='/';
+  display.innerHTML=calcString;
 }
 function minus(){
-  toDoOperation='min';
-  isOperationSet=true;
+  // toDoOperation='min';
+  // isOperationSet=true;
+  calcString+='-';
+  display.innerHTML=calcString;
 }
 function plus(){
-  toDoOperation='plus';
-  isOperationSet=true;
+  // toDoOperation='plus';
+  // isOperationSet=true;
+  calcString+='*';
+  display.innerHTML=calcString;
 }
 function result(){
-  if (val1set==true&&val2set==true&&isOperationSet==true) {
-    var returnValue=0;
-    switch (toDoOperation) {
-      case 'mul':
-        returnValue = value1 * value2;
-        display.innerHTML=returnValue;
-        break;
-      case 'div':
-      returnValue = value1/value2;
-      display.innerHTML=returnValue;
-        break;
-      case 'min':
-      returnValue = value1-value2;
-      display.innerHTML=returnValue;
-        break;
-      case 'plus':
-      returnValue = value1+value2;
-      display.innerHTML=returnValue;
-        break;
-    }
-  }
+  // if (val1set==true&&val2set==true&&isOperationSet==true) {
+  //   var returnValue=0;
+  //   switch (toDoOperation) {
+  //     case 'mul':
+  //       returnValue = value1 * value2;
+  //       display.innerHTML=returnValue;
+  //       break;
+  //     case 'div':
+  //     returnValue = value1/value2;
+  //     display.innerHTML=returnValue;
+  //       break;
+  //     case 'min':
+  //     returnValue = value1-value2;
+  //     display.innerHTML=returnValue;
+  //       break;
+  //     case 'plus':
+  //     returnValue = value1+value2;
+  //     display.innerHTML=returnValue;
+  //       break;
+  //   }
+  // }
+  var leResult = eval(calcString);
+  display.innerHTML=leResult;
 }
